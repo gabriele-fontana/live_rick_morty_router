@@ -1,29 +1,8 @@
-import { useEffect, useState } from "react"
+
 
 import CharactersList from "../components/CharactersList"
 
 export default function CharactersPage() {
-
-  const api_url = 'https://rickandmortyapi.com/api/character'
-  const [characters, setCharacters] = useState(null) // its an array
-
-
-
-  function fetchData(url) {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data); // its an object 
-        // store the response insie the characters reactive variable
-        setCharacters(data) // characters is an object
-
-      })
-  }
-
-  useEffect(() => {
-    // fetch data here
-    fetchData(api_url)
-  }, [])
 
   return (
 
@@ -41,9 +20,9 @@ export default function CharactersPage() {
         </div>
       </div>
 
-      {/* /.jumbotron */}
+      
 
-      <CharactersList characters={characters} />
+      <CharactersList />
       
 
 

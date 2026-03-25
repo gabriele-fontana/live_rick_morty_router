@@ -10,6 +10,24 @@ const GlobalContext = createContext()
 
 function GlobalProvider({ children }){
     
+    const api_url = 'https://rickandmortyapi.com/api/character'
+    const [characters, setCharacters] = useState(null) // its an array
+
+
+    function fetchData(url) {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data); // its an object 
+                // store the response insie the characters reactive variable
+                setCharacters(data) // characters is an object
+
+            })
+    }
+    
+    
+    
+
     const [favourites, setFavourites] = useState([])
     
     function addFavourite(id) {
@@ -45,7 +63,11 @@ function GlobalProvider({ children }){
         <GlobalContext.Provider value={{
             favourites,
             addFavourite,
-            isFavourite
+            isFavourite,
+            fetchData, 
+            api_url, 
+            characters,
+            
 
         }}>
             {children}

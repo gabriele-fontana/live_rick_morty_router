@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom"
 import CharacterCard from "./CharacterCard"
 import { Mirage } from 'ldrs/react'
+import { useGlobal } from "../contexts/GlobalContext"
+import { useEffect } from "react"
 
-export default function CharactersList({characters}){
+export default function CharactersList(){
+  const {characters, fetchData, api_url} = useGlobal()
 
+  useEffect(() => {
+    // fetch data here
+    fetchData(api_url)
+  }, [])
   return (
     <section className="characters">
       <div className="container">
